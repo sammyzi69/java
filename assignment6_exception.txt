@@ -1,0 +1,62 @@
+package first;
+
+import java.util.*;
+class exception
+{
+void num()
+{
+int num1,num2;
+System.out.println("enter value of num1,num2");
+Scanner input=new Scanner(System.in);
+num1=input.nextInt();
+num2=input.nextInt();
+
+try{
+         
+         int output=num1/num2;
+         System.out.println ("Result: "+output);
+      }
+      catch(ArithmeticException e){
+         System.out.println ("You Shouldn't divide a number by zero");
+      }
+}
+
+void numberConversion(){
+	
+	Scanner input = new Scanner(System.in);
+    System.out.println("Enter the string to be converted to an integer : ");
+    String s = input.nextLine();
+    try{
+        int number = Integer.parseInt(s);
+        System.out.println("The input integer after conversion is : "+number);
+    }
+    catch(java.lang.NumberFormatException e){
+        System.out.println("Error!!! While converting input to integer");
+    }
+}
+
+
+
+}
+
+
+
+class exception_main
+{
+   public static void main(String args[])
+   {
+      exception e=new exception();
+    e.num();
+    e.numberConversion();
+   }
+}
+
+
+/**************output*****************/
+
+enter value of num1,num2
+2 0
+You Shouldn't divide a number by zero
+Enter the string to be converted to an integer : 
+ss
+Error!!! While converting input to integer

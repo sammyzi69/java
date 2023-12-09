@@ -1,0 +1,126 @@
+//program on  assignment 2
+
+//package first;
+
+import java.util.Scanner;
+
+class publication  //base class
+{
+	String title;
+	int price;
+	int copies;
+	publication()  //default constructor
+	{
+		price=0;
+		copies=0;
+		title="\0";
+	}
+	publication(int p)
+	{
+		price=p;
+	}
+	public int getcopies()
+	{
+		return this.copies;
+		
+	}
+	public void setcopies(int copies)
+	{
+		this.copies=copies;
+		
+	}
+	public void sellcopy(int qty)
+	{
+		System.out.println("Total Publication sale="+(price*qty));
+	}
+}
+//===========================================================================
+class book extends publication //child class
+{
+	String author;
+	book()  //default constructor
+	{
+		author="\0";
+	}
+	book(int p)
+	{
+		price=p;
+	}
+	
+	public void ordercopies(int copies)
+	{
+		setcopies(getcopies()+copies);
+	}
+	public void sellcopy(int qty)
+	{
+		System.out.println("Total Book sale="+(price*qty));
+	}
+	
+}
+//==========================================================================
+
+class magazine extends publication   //child class
+{
+	int orderqty;
+	String currissue;
+	magazine()  //default constructor
+	{
+		orderqty=0;
+		currissue="\0";
+	}
+	magazine(int p)
+	{
+		price=p;
+	}
+	public void sellcopy(int qty)
+	{
+		System.out.println("Total Magazine sale="+(price*qty));
+	}
+	
+	void recvnewissue(String newissue)
+	{
+		setcopies(orderqty);
+		currissue=newissue;
+		
+	}
+	
+	
+}
+
+//=============================================================================
+
+class publications {
+
+	public static void main(String[] args) {
+		
+		String title,author;
+		int copies;
+		
+		/******************details of Book**************************/
+		
+		System.out.println("enter title,author and no.of copies of book");
+		Scanner input=new Scanner(System.in);
+		title=input.nextLine();
+		author=input.nextLine();
+		copies=input.nextInt();
+		
+		book obj=new book();
+		obj.ordercopies(copies);
+		publication obj1=new book(100);//overiding concept
+		obj1.sellcopy(copies); //child class -overeding concept
+		publication obj2=new publication(100);  
+		obj2.sellcopy(copies); //parent class
+		
+		/***************details of magazine***************************/
+		
+        System.out.println("enter title,author and no.of copies of magazine");
+		Scanner input1=new Scanner(System.in);
+		title=input1.nextLine();
+		author=input1.nextLine();
+		copies=input1.nextInt();
+		publication obj3=new magazine(50);//overriding concept
+		obj3.sellcopy(copies);
+		
+	}
+
+}

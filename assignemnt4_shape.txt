@@ -1,0 +1,64 @@
+package first;
+
+abstract class shape {
+double dim1;
+double dim2;
+shape(double a, double b)
+{
+dim1 = a;
+dim2 = b;
+}
+// compute_area is now an abstract method
+abstract double compute_area();
+}
+
+
+class Rectangle extends shape 
+{
+Rectangle(double a, double b)
+{
+super(a, b);
+}
+// override area for rectangle
+double compute_area()
+{
+System.out.println("Inside Area for Rectangle.");
+return dim1 * dim2;
+}
+}
+
+
+class Triangle extends shape
+{
+Triangle(double a, double b)
+{
+super(a, b);
+}
+// override area for right triangle
+double compute_area() {
+System.out.println("Inside Area for Triangle.");
+return dim1 * dim2 / 2;
+}
+}
+
+
+class AbstractAreas
+{
+public static void main(String args[])
+{
+
+Rectangle r = new Rectangle(4, 6);
+Triangle t = new Triangle(20, 40);
+shape ref; // this is OK, no object is created
+ref = r;
+System.out.println("Area is " + ref.compute_area());
+ref = t;
+System.out.println("Area is " + ref.compute_area());
+}
+}
+
+*************output*******************
+Inside Area for Rectangle.
+Area is 24.0
+Inside Area for Triangle.
+Area is 400.0
